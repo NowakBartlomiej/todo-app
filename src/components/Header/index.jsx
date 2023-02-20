@@ -13,7 +13,7 @@ const Header = () => {
         e.preventDefault();
 
         setTodoList([...todoList, {
-            id: crypto.randomUUID,
+            id: crypto.randomUUID(),
             name: inputValue,
             isCompleted: false,
         }])

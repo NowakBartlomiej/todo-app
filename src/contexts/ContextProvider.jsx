@@ -4,11 +4,16 @@ const TodoContext = createContext();
 
 export const ContextProvider = ({children}) => {
     const [todoList, setTodoList] = useState([]);
+
+    const taskCount = todoList.length;
+    const taskCompletedCount = todoList.filter(task => task.isCompleted == true).length;
     
     return <TodoContext.Provider
         value={{ 
             todoList,
-            setTodoList
+            setTodoList,
+            taskCount,
+            taskCompletedCount,
          }}
     >
         {children}
