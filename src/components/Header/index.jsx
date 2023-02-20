@@ -6,13 +6,13 @@ import styles from './header.module.css'
 
 
 const Header = () => {
-    const {todoList, setTodoList} = useTodoContext();
+    const {todoList, setTodoList, setTodoListToLocalStorage} = useTodoContext();
     const [inputValue, setInputValue] = useState('');
     
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        setTodoList([...todoList, {
+        setTodoListToLocalStorage([...todoList, {
             id: crypto.randomUUID(),
             name: inputValue,
             isCompleted: false,

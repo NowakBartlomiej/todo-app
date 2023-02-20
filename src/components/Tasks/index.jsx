@@ -6,7 +6,7 @@ import {BsFillCheckCircleFill} from 'react-icons/bs'
 import {TbTrash} from 'react-icons/tb'
 
 const Tasks = () => {
-    const {todoList, setTodoList, taskCount, taskCompletedCount} = useTodoContext();
+    const {todoList, setTodoList, taskCount, taskCompletedCount, setTodoListToLocalStorage} = useTodoContext();
   
     const handleComplete = (taskId) => {
         const newTodoList = todoList.map(task => {
@@ -19,7 +19,7 @@ const Tasks = () => {
             return task;
         })
 
-        setTodoList(newTodoList);
+        setTodoListToLocalStorage(newTodoList);
     }
     
     const handleDelete = (taskId) => {
@@ -29,7 +29,7 @@ const Tasks = () => {
             }
         })
 
-        setTodoList(newTodoList);
+        setTodoListToLocalStorage(newTodoList);
     }    
 
 
