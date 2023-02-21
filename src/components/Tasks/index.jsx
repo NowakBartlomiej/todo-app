@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTodoContext } from '../../contexts/ContextProvider'
 import styles from './tasks.module.css'
 
 import {BsFillCheckCircleFill} from 'react-icons/bs'
 import {TbTrash} from 'react-icons/tb'
+import {AiFillEdit} from 'react-icons/ai'
+import Modal from "../Modal/index"
 
 const Tasks = () => {
-    const {todoList, setTodoList, taskCount, taskCompletedCount, setTodoListToLocalStorage} = useTodoContext();
+    const {todoList, taskCount, taskCompletedCount, setTodoListToLocalStorage, showModal, setShowModal} = useTodoContext();
+    const [currentId, setCurrentId] = useState(null);
   
     const handleComplete = (taskId) => {
         const newTodoList = todoList.map(task => {
@@ -30,9 +33,10 @@ const Tasks = () => {
         })
 
         setTodoListToLocalStorage(newTodoList);
+        setShowModal(false);
     }    
 
-
+    
     return (
     <main className={styles.main}>
         { taskCount != 0 &&
@@ -57,13 +61,27 @@ const Tasks = () => {
 
             <p className={task.isCompleted ? styles.textCompleted : ''}>{task.name}</p>
 
-            <div className={styles.deleted}>
-                <TbTrash onClick={() => handleDelete(task.id)}/>
+            <div className={styles.actions}>
+                <div className={styles.edit}>
+                    <AiFillEdit/>
+                </div>
+
+                <div className={styles.deleted}>
+                    <TbTrash onClick={() => {
+                        setShowModal(true);
+                        // handleDelete(task.id)
+                        setCurrentId(task.id);
+                    }}/>
+                </div>
             </div>
+            
         </div>
         ))}
-        
-
+        {showModal && (
+            <Modal onDelete={handleDelete} currentId={currentId}/> 
+        )
+        }
+    
     </main>
   )
 }

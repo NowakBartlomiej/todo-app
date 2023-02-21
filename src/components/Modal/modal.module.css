@@ -1,0 +1,59 @@
+.modal {
+    /* position: absolute; */
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* z-index: 100; */
+    top: 0;
+    background: #000000a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background: hsl(225, 6%, 25%);
+    padding: 1.5rem;
+    border-radius: .7rem;
+    height: fit-content;
+    min-width: min(70%, 30rem);
+    color: #fff;
+}
+
+.box p {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn {
+    padding: .7rem 1rem;
+    border-radius: .7rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    transition: all .2s ease-in-out;
+}
+
+.yes {
+    background: rgb(206, 24, 24);
+    color: #fff;
+}
+
+.no {
+    background: hsl(225, 6%, 75%);
+}
+
+.yes:hover {
+    background: hsl(0, 79%, 55%);
+}
+
+.no:hover {
+    background: hsl(225, 6%, 85%);
+}
