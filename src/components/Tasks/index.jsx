@@ -5,11 +5,14 @@ import styles from './tasks.module.css'
 import {BsFillCheckCircleFill} from 'react-icons/bs'
 import {TbTrash} from 'react-icons/tb'
 import {AiFillEdit} from 'react-icons/ai'
-import Modal from "../Modal/index"
+import ModalDelete from "../ModalDelete/index"
+import ModalEdit from '../ModalEdit'
 
 const Tasks = () => {
-    const {todoList, taskCount, taskCompletedCount, setTodoListToLocalStorage, showModal, setShowModal} = useTodoContext();
+    const {todoList, taskCount, taskCompletedCount, setTodoListToLocalStorage, showModalDelete, setShowModalDelete, showModalEdit, 
+        setShowModalEdit} = useTodoContext();
     const [currentId, setCurrentId] = useState(null);
+    const [currentName, setCurrentName] = useState('');
   
     const handleComplete = (taskId) => {
         const newTodoList = todoList.map(task => {
@@ -33,8 +36,23 @@ const Tasks = () => {
         })
 
         setTodoListToLocalStorage(newTodoList);
-        setShowModal(false);
+        setShowModalDelete(false);
     }    
+
+    const handleEdit = (taskId, newTaskName) => {
+        const newTodoList = todoList.map(task => {
+            if (task.id === taskId) {
+                return {
+                    ...task,
+                    name: newTaskName,
+                }
+            }
+            return task;
+        })
+
+        setTodoListToLocalStorage(newTodoList);
+        setShowModalEdit(false);
+    }
 
     
     return (
@@ -63,12 +81,16 @@ const Tasks = () => {
 
             <div className={styles.actions}>
                 <div className={styles.edit}>
-                    <AiFillEdit/>
+                    <AiFillEdit onClick={() => {
+                        setShowModalEdit(true);
+                        setCurrentId(task.id)
+                        setCurrentName(task.name);
+                    }}/>
                 </div>
 
                 <div className={styles.deleted}>
                     <TbTrash onClick={() => {
-                        setShowModal(true);
+                        setShowModalDelete(true);
                         // handleDelete(task.id)
                         setCurrentId(task.id);
                     }}/>
@@ -77,11 +99,16 @@ const Tasks = () => {
             
         </div>
         ))}
-        {showModal && (
-            <Modal onDelete={handleDelete} currentId={currentId}/> 
+        {showModalDelete && (
+            <ModalDelete onDelete={handleDelete} currentId={currentId}/> 
         )
         }
-    
+        {
+            showModalEdit && (
+                <ModalEdit onEdit={handleEdit} currentId={currentId} currentName={currentName}/>
+            )
+        }
+        
     </main>
   )
 }

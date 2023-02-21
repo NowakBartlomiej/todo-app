@@ -5,7 +5,8 @@ const LOCAL_STORAGE_KEY = 'todo:list'
 
 export const ContextProvider = ({children}) => {
     const [todoList, setTodoList] = useState([]);
-    const [showModal, setShowModal] = useState(false);
+    const [showModalDelete, setShowModalDelete] = useState(false);
+    const [showModalEdit, setShowModalEdit] = useState(false);
 
     const taskCount = todoList.length;
     const taskCompletedCount = todoList.filter(task => task.isCompleted == true).length;
@@ -31,8 +32,10 @@ export const ContextProvider = ({children}) => {
             taskCompletedCount,
             loadSavedTasks,
             setTodoListToLocalStorage,
-            showModal,
-            setShowModal,
+            showModalDelete,
+            setShowModalDelete,
+            showModalEdit, 
+            setShowModalEdit
          }}
     >
         {children}
