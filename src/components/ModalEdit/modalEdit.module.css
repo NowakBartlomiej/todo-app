@@ -1,0 +1,86 @@
+.ModalEdit {
+     width: 100%;
+     min-height: 100vh;
+     min-height: 100dvh;
+     top: 0;
+     background: #000000a1;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.box {
+    background: hsl(225, 6%, 25%);
+    padding: 1.5rem;
+    border-radius: .7rem;
+    height: fit-content;
+    min-width: min(70%, 30rem);
+    color: #fff;
+}
+
+.box p {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.inputEdit {
+    width: 100%;
+    padding: .5rem .7rem;
+    border-radius: .4rem;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 300;
+    
+    border: 5px solid transparent;
+    border-image: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
+    border-image-slice: 1;
+
+    border: 4px solid transparent;
+  border-radius: .4rem;
+  background: 
+    linear-gradient(to right, hsl(225, 6%, 20%), hsl(225, 6%, 20%)), 
+    linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  margin-bottom: 1.5rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.btn {
+    padding: .7rem 1rem;
+    border-radius: .7rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    transition: all .2s ease-in-out;
+}
+
+.save {
+    background: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100% );
+    color: #fff;
+}
+
+.save:disabled,
+.save[disabled] {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
+.cancel {
+    background: hsl(225, 6%, 75%);
+}
+
+.save:hover {
+    background-color: #e91e63;
+}
+
+.cancel:hover {
+    background: hsl(225, 6%, 85%);
+}
