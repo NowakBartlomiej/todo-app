@@ -14,8 +14,8 @@ const ModalEdit = ({onEdit, currentId, currentName}) => {
         <div className={styles.buttons}>
           <button onClick={() => {
             onEdit(currentId, editValue);
-          }} className={`${styles.btn} ${styles.save}`}>Save</button>
-          <button onClick={() => setShowModalEdit(false)} className={`${styles.btn} ${styles.cancel}`}>Cancel</button>
+          }} className={`${styles.btn} ${styles.save}`} disabled={!editValue}>Save</button>
+          <button onClick={() => setShowModalEdit(false)} className={`${styles.btn} ${styles.cancel}`} >Cancel</button>
         </div>
       </div>
     </dialog>

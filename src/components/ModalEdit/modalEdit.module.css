@@ -67,6 +67,12 @@
     color: #fff;
 }
 
+.save:disabled,
+.save[disabled] {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
 .cancel {
     background: hsl(225, 6%, 75%);
 }
